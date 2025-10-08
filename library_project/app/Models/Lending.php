@@ -9,4 +9,14 @@ class Lending extends Model
 {
     /** @use HasFactory<\Database\Factories\LendingFactory> */
     use HasFactory;
+
+    protected function setKeysForSaveQuery($query)
+    {
+        $query
+            ->where('user_id', '=', $this->getAttribute('user_id'))
+            ->where('copy_id', '=', $this->getAttribute('copy_id'))
+            ->where('start', '=', $this->getAttribute('start'));
+        return $query;
+    }
+
 }
