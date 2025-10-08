@@ -19,4 +19,10 @@ class Lending extends Model
         return $query;
     }
 
+    protected $fillable = [
+        'user_id',
+        'copy_id',
+        'start'
+    ];
+
 }
