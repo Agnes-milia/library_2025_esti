@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained("users");
             $table->foreignId('copy_id')->constrained("copies");
             $table->date("start")->default(now());
+            $table->date("end")->nullable();
+            $table->integer('warnings')->default(0);
             $table->timestamps();
         });
     }

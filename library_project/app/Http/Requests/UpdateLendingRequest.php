@@ -11,7 +11,7 @@ class UpdateLendingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

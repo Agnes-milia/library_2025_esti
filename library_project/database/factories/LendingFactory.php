@@ -21,7 +21,8 @@ class LendingFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'copy_id' => Copy::all()->random()->id,
-            'start' => fake()->date()
+            'start' => fake()->date(),
+            'warnings' => rand(0,3)
         ];
     }
 }
