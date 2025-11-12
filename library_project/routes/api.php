@@ -13,7 +13,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 //bárki által elérhető
-Route::get('/book-with-copies', [BookController::class, "bookWithCopies"]);
+
 Route::post('/register',[RegisteredUserController::class, 'store']);
 Route::post('/login',[AuthenticatedSessionController::class, 'store']);
 
@@ -21,7 +21,8 @@ Route::post('/login',[AuthenticatedSessionController::class, 'store']);
 Route::middleware(['auth:sanctum'])
 ->group(function () {
     Route::get("/users/{id}", [UserController::class, "show"]);
-    Route::get("/lending-with-copies", [LendingController::class, "lendingWithCopies"]);
+    Route::get('/book-with-copies', [BookController::class, "bookWithCopies"]);
+    Route::get("/my-lending-with-copies", [LendingController::class, "myLendingWithCopies"]);
     // Kijelentkezés útvonal
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum'])
 //admin útvonalak
 Route::middleware(['auth:sanctum', Admin::class])
 ->group(function () {
+    Route::get("/lending-with-copies/{id}", [LendingController::class, "lendingWithCopies"]);
     Route::get('/users', [UserController::class, 'index']);
 });
 

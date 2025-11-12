@@ -28,7 +28,7 @@ class Lending extends Model
     ];
 
     public function copies(){
-        return $this->belongsTo(Copy::class);
+        return $this->belongsTo(Copy::class, "copy_id", "id");
     }
 
 }
