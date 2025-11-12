@@ -15,7 +15,7 @@ class Book extends Model
     ];
 
     public function copies(){
-        return $this->hasMany(Copy::class, "book_id", "id");
+        return $this->hasMany(Copy::class);
     }
 
 }

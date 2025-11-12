@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lending;
 use App\Http\Requests\StoreLendingRequest;
 use App\Http\Requests\UpdateLendingRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LendingController extends Controller
 {
@@ -58,5 +59,14 @@ class LendingController extends Controller
         $lending = $this->show($user_id, $copy_id, $start);
         $lending->delete();
         return response()->json(null, 200);
+    }
+
+    //saját függvények
+    public function lendingWithCopies(){
+        //bejelentkezett felhasználó
+        $user = Auth::user();
+        return Lending::with("copies")
+        ->where("user_id", $user)
+        ->get();
     }
 }

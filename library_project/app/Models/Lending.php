@@ -27,4 +27,8 @@ class Lending extends Model
         'warnings'
     ];
 
+    public function copies(){
+        return $this->belongsTo(Copy::class);
+    }
+
 }
